@@ -1,0 +1,332 @@
+/* Base Styles */
+:root {
+  --bg-color: #0f0f0f;
+  --card-bg: #1a1a1a;
+  --text-color: #ffffff;
+  --accent-color: #e50914;
+  --glow-color: rgba(229, 9, 20, 0.6);
+  --input-bg: #2a2a2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#app-title {
+  font-size: 3rem;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px var(--glow-color);
+}
+
+#search-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#movie-search {
+  width: 100%;
+  padding: 15px 25px;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background-color: var(--input-bg);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#movie-search:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* Grid Layout */
+#movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Movie Card Styles */
+.movie-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px var(--glow-color);
+}
+
+.poster-wrapper {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.1);
+}
+
+.movie-info {
+  padding: 15px;
+}
+
+.movie-title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-rating {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  border-top: 1px solid #333;
+  color: #888;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  #app-title {
+    font-size: 2rem;
+  }
+
+  #movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .movie-title {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animated background using existing colors */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    120deg,
+    rgba(229, 9, 20, 0.18),
+    rgba(16, 16, 16, 0.06) 30%,
+    rgba(24, 24, 24, 0.12) 60%
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 18s linear infinite;
+  pointer-events: none;
+  filter: blur(30px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: -10% -20% auto auto;
+  width: 420px;
+  height: 420px;
+  z-index: -1;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(229, 9, 20, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(circle at 70% 70%, rgba(255, 204, 0, 0.06), transparent 30%);
+  animation: floaty 9s ease-in-out infinite;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Recently watched button */
+header#main-header {
+  position: relative;
+}
+.icon-btn {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.12s;
+}
+.icon-btn:hover {
+  box-shadow: 0 6px 18px var(--glow-color);
+  transform: translateY(-2px);
+}
+.icon-btn svg {
+  color: var(--text-color);
+  opacity: 0.95;
+}
+
+/* Recent panel */
+.recent-panel {
+  position: fixed;
+  right: 18px;
+  top: 76px;
+  width: 320px;
+  max-height: 72vh;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transform: translateX(110%);
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.2s;
+  opacity: 0;
+  z-index: 10002;
+}
+.recent-panel.open {
+  transform: translateX(0);
+  opacity: 1;
+}
+.recent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+.recent-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+#recent-list {
+  padding: 12px;
+  overflow: auto;
+  max-height: 54vh;
+}
+.recent-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.recent-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.recent-item img {
+  width: 56px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.recent-meta {
+  flex: 1;
+  overflow: hidden;
+}
+.recent-title {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent-sub {
+  font-size: 0.78rem;
+  color: #bbb;
+}
+.recent-footer {
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-clear {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .recent-panel {
+    right: 10px;
+    width: 90%;
+    top: 64px;
+  }
+}

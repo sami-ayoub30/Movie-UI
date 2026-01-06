@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VibeFlix - Your Movie Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="main-header">
+      <h1 id="app-title">VibeFlix</h1>
+      <div id="search-container">
+        <input
+          type="text"
+          id="movie-search"
+          placeholder="Search for movies..."
+        />
+      </div>
+      <button
+        id="recent-btn"
+        aria-label="Recently watched"
+        title="Recently watched"
+        class="icon-btn"
+      >
+        <!-- clock/history icon -->
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 7V12L15 14"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </header>
+
+    <aside id="recent-panel" class="recent-panel" aria-hidden="true">
+      <div class="recent-header">
+        <h3>Recently watched</h3>
+        <button id="recent-close" aria-label="Close recent">✕</button>
+      </div>
+      <div id="recent-list" class="recent-list">
+        <!-- recently watched items injected here -->
+      </div>
+      <div class="recent-footer">
+        <button id="clear-recent" class="btn-clear">Clear</button>
+      </div>
+    </aside>
+
+    <main id="movie-container">
+      <section id="movie-grid" class="grid">
+        <!-- Movies will be dynamically loaded here -->
+      </section>
+    </main>
+
+    <footer id="main-footer">
+      <p id="footer-text">&copy; 2026 VibeFlix. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
